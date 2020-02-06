@@ -1,0 +1,16 @@
+[Unit]
+Description=uWSGI Emperor service
+
+[Service]
+ExecStart=/var/www/onlineshop/venv/bin/uwsgi --emperor /var/www/onlineshop/run
+User=django
+Group=www-data
+Restart=on-failure
+KillSignal=SIGQUIT
+Type=notify
+NotifyAccess=all
+StandardError=syslog
+
+[Install]
+WantedBy=multi-user.target
+
